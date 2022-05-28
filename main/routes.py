@@ -1,8 +1,9 @@
-from flask import Flask, render_template, url_for, config, flash,redirect
+from flask import redirect,render_template,url_for,flash
+from main import app,db,bcrypt
+from main.forms import RegistrationForm, LoginForm
+from flask_login import login_user
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "4b9ce44826fe9027547e917dbc278ebd"
-from forms import RegistrationForm, LoginForm
+from main.models import User
 
 posts = [
     {
@@ -34,7 +35,11 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f"Account created for {form.userName.data}, ""success")
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
+        user = User(userName=form.userName.data,email=form.email.data,password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Your Account has been created","success")
         return redirect(url_for('home'))
     return render_template("register.html", title="Register", form=form)
 
@@ -43,13 +48,10 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data== "korir@gmail.com" and form.password.data=="1111":
-            flash("you have been logged in ","success")
-            return redirect(url_for("home"))
+        user =  User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password,form.password.data):
+            login_user(user,remember=form.remember.data)
+            return render_template(url_for("home"))
         else:
             flash("login Unsuccessful , Please check your details ", "danger")
     return render_template("login.html", title="Login", form=form)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
