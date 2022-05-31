@@ -1,0 +1,23 @@
+{%extends "layout.html" %}
+{%block content %}
+<div class=" pad row">
+    <div class="col-lg-6">
+         <div class="media">
+             <img class="rounded float-left account-img" src="{{ image_file }}">
+         </div>
+    </div>
+     <div class="col-lg-6">
+         <div>
+            <h3>Product Name</h3>
+              </div>
+             <div>
+                <p>Description</p>
+             </div>
+              <button type="button" class="btn btn-outline-warning btn-lg download-buttons"><i class="fa-brands fa-google-play"></i> Add to Cart</button>
+              <button type="button" class="btn btn-warning btn-lg download-buttons"><i class="fa-brands fa-apple"></i> Buy Now</button>
+
+
+    </div>
+
+</div>
+{%endblock content %}

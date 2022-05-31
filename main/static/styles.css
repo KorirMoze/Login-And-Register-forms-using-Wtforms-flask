@@ -1,11 +1,17 @@
 body{
   font-family: "Montserrat;"
+  padding:5% 40%;
+  background-color:#333;
 }
 
-#title{
-  background-color: grey;
-  color: #fff;
-  padding:0 ;
+#titlee{
+  background-color: white;
+
+  padding:0% 10% ;
+
+}
+p{
+color:#8f8f8f
 
 }
 
@@ -14,8 +20,13 @@ h1{
   font-size: 3rem;
   line-height: 1.5;
 }
+h5{
+font-family:"Monteserrat-Bold";
+font-size:5px;
+}
 .container-fluid{
-  padding: 0% 15% 3% 15%;
+  padding: 0% 10% 3% 10%;
+  background-color:white;
 }
 
 /* navigation styling */
@@ -37,7 +48,8 @@ h1{
   font-size: 1.2rem;
   font-family: "Montserrat-light"
 }
-
+.navbar{
+padding:0%
 }
 
 /* download buttons */
@@ -48,4 +60,39 @@ h1{
 .title-image{
   width: 60%;
   transform: rotate(25deg);
+}
+.account-img{
+    max-width:28px;
+    max-height:32px;
+}
+#features{
+  padding: 5% 10%;
+ text-align:center;
+}
+.icon{
+margin-bottom:1px;
+}
+.tiles{
+margin-bottom:10px;
+padding:0;
+}
+.top{
+margin-bottom:0px;
+padding:12px 15px;
+
+}
+#testimonials{
+padding:5% 10%;
+background-color:#333;
+}
+.logos{
+padding:5% 10%;
+}
+.drop{
+max-width:60%;
+padding-left:5px;
+font-family:"Monteserrat-Black";
+}
+.pad{
+margin-top:10px;
 }
